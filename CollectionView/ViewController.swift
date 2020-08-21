@@ -40,8 +40,7 @@ class ViewController: UIViewController {
         restaurantCollectionView?.delegate = self
         filteringCollectionView?.dataSource = self
         filteringCollectionView?.delegate = self
-        let hoge: UIView = filteringCollectionView ?? view
-        NSLayoutConstraint.activate([hoge.leadingAnchor.constraint(equalTo: hoge.trailingAnchor, constant: 15)])
+        
         view.addSubview(restaurantCollectionView ?? UICollectionView())
         view.addSubview(filteringCollectionView ?? UICollectionView())
         
