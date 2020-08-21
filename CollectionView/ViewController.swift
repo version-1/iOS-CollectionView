@@ -32,10 +32,18 @@ class ViewController: UIViewController {
         restaurantCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         restaurantCollectionView?.backgroundColor = UIColor.white
         
+        filteringCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        filteringCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        filteringCollectionView?.backgroundColor = UIColor.white
+        
         restaurantCollectionView?.dataSource = self
         restaurantCollectionView?.delegate = self
-        
+        filteringCollectionView?.dataSource = self
+        filteringCollectionView?.delegate = self
+        let hoge: UIView = filteringCollectionView ?? view
+        NSLayoutConstraint.activate([hoge.leadingAnchor.constraint(equalTo: hoge.trailingAnchor, constant: 15)])
         view.addSubview(restaurantCollectionView ?? UICollectionView())
+        view.addSubview(filteringCollectionView ?? UICollectionView())
         
         self.view = view
     }
@@ -49,7 +57,8 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        myCell.backgroundColor = UIColor.blue
+        myCell.backgroundColor = collectionView == self.restaurantCollectionView ? UIColor.blue : UIColor.red
+            
         return myCell
     }
 }
