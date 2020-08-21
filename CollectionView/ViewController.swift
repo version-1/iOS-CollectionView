@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var addBtn: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.white
+        self.navigationItem.title = "My Restaurants"
     }
 
 
